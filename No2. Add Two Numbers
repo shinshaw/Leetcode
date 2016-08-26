@@ -1,0 +1,23 @@
+You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+Example:
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+
+ListNode node=new ListNode(0);
+		ListNode p=l1,q=l2,t=node;
+		int sum=0;
+		while(p!=null||q!=null){
+			if(p!=null){
+				sum+=p.val;
+			}
+			if(q!=null){
+				sum+=q.val;
+			}
+			t.next=new ListNode(sum%10);
+			t=t.next;
+			sum/=10;
+		}
+		if(sum==1)
+			t.next=new ListNode(1);
+		return node.next;		
